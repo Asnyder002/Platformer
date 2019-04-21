@@ -80,7 +80,7 @@ public class Player extends MapObject {
 
             sprites = new ArrayList<BufferedImage[]>();
 
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 6; i++) {
                 BufferedImage[] bi = new BufferedImage[numFrames[i]];
                 for (int j = 0; j < numFrames[i]; j++) {
 
@@ -163,15 +163,31 @@ public class Player extends MapObject {
                 }
             }
             // Fireball attack
-            for (int j = 0; j < fireBalls.size(); j++) {
-                if (fireBalls.get(i).intersects(e)) {
+                for (int j = 0; j < fireBalls.size(); j++) {
+                if (fireBalls.get(j).intersects(e)) {
                     e.hit(fireBallDamage);
                     fireBalls.get(j).setHit();
                     break;
                 }
             }
+            
+            
+            
+            // Check enemy collision
+            if(intersects(e)) {
+                hit(e.getDamage());
+            }
+            
         }
-
+    }
+    
+    public void hit(int damage) {
+        if(flinching) return;
+        health -= damage;
+        if(health < 0) health = 0;
+        if(health == 0) dead = true;
+        flinching = true;
+        flinchTimer = System.nanoTime();
     }
 
     private void getNextPosition() {
@@ -273,7 +289,8 @@ public class Player extends MapObject {
                 i--;
             }
         }
-
+        
+        
         // Set animation
         if (striking) {
             if (currentAction != STRIKING) {

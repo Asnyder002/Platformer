@@ -21,7 +21,7 @@ public class Enemy extends MapObject {
         return dead;
     }
     
-    public int getDamge() {
+    public int getDamage() {
         return damage;
     }
     
