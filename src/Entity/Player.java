@@ -137,6 +137,43 @@ public class Player extends MapObject {
         striking = true;
     }
 
+    public void checkAttack(ArrayList<Enemy> enemies) {
+
+        // Loops through enemies
+        for (int i = 0; i < enemies.size(); i++) {
+
+            Enemy e = enemies.get(i);
+
+            // Strike attack
+            if (striking) {
+                if (facingRight) {
+                    if (e.getx() > x
+                            && e.getx() < x + strikeRange
+                            && e.gety() > y - height / 2
+                            && e.gety() < y + height / 2) {
+                        e.hit(strikeDamage);
+                    }
+                } else {
+                    if (e.getx() < x
+                            && e.getx() > x - strikeRange
+                            && e.gety() > y - height / 2
+                            && e.gety() < y + height / 2) {
+                        e.hit(strikeDamage);
+                    }
+                }
+            }
+            // Fireball attack
+            for (int j = 0; j < fireBalls.size(); j++) {
+                if (fireBalls.get(i).intersects(e)) {
+                    e.hit(fireBallDamage);
+                    fireBalls.get(j).setHit();
+                    break;
+                }
+            }
+        }
+
+    }
+
     private void getNextPosition() {
 
         // movement
