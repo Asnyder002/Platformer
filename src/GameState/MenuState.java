@@ -81,7 +81,7 @@ public class MenuState extends GameState {
     //What happens when menu items are selected.
     private void select() {
         if(currentChoice == 0) {
-            gsm.setState(GameStateManager.LEVEl1STATE);
+            gsm.setState(GameStateManager.LEVEL1STATE);
         }
         if(currentChoice == 1) {
             //help

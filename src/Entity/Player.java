@@ -1,10 +1,12 @@
 package Entity;
 
 import TileMap.*;
+import Audio.AudioPlayer;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 public class Player extends MapObject {
 
@@ -42,6 +44,8 @@ public class Player extends MapObject {
     private static final int DYING = 4;
     private static final int FIREBALL = 5;
     private static final int STRIKING = 6;
+    
+    private HashMap<String, AudioPlayer> sfx;
 
     public Player(TileMap tm) {
         super(tm);
@@ -111,6 +115,10 @@ public class Player extends MapObject {
         currentAction = IDLE;
         animation.setFrames(sprites.get(IDLE));
         animation.setDelay(400);
+        
+        sfx = new HashMap<String, AudioPlayer>();
+        sfx.put("jump", new AudioPlayer("/Resources/SFX/jump.mp3"));
+        sfx.put("strike", new AudioPlayer("/Resources/SFX/strike.mp3"));
     }
 
     public int getHealth() {
@@ -225,6 +233,7 @@ public class Player extends MapObject {
 
         // Jumping
         if (jumping && !falling) {
+            sfx.get("jump").play();
             dy = jumpStart;
             falling = true;
         }
@@ -290,10 +299,19 @@ public class Player extends MapObject {
             }
         }
         
+        // check done flinching
+        if(flinching) {
+            long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
+            if(elapsed > 1000) {
+                flinching = false;
+            }
+        }
+        
         
         // Set animation
         if (striking) {
             if (currentAction != STRIKING) {
+                sfx.get("strike").play();
                 currentAction = STRIKING;
                 animation.setFrames(sprites.get(STRIKING));
                 animation.setDelay(50);

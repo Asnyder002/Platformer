@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import Entity.Enemies.*;
 import Entity.Explosion.*;
+import Audio.AudioPlayer;
 
 public class Level1State extends GameState{
     
@@ -22,6 +23,8 @@ public class Level1State extends GameState{
     private ArrayList<Explosion> explosions;
     
     private HUD hud;
+    
+    private AudioPlayer bgMusic;
     
     public Level1State(GameStateManager gsm) {
         this.gsm = gsm;
@@ -43,11 +46,18 @@ public class Level1State extends GameState{
         player = new Player(tileMap);
         player.setPosition(100, 100);
         
+        // Adds enemies
         populateEnemies();
         
+        // Creates array list for explosion effect
         explosions = new ArrayList<Explosion>();
         
+        // Creates hud
         hud = new HUD(player);
+        
+        // Adds background music
+        bgMusic = new AudioPlayer("/Resources/Music/level1-1.mp3");
+        bgMusic.play();
         
     }
     
