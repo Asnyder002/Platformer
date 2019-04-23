@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entity.Enemies;
 
 import Entity.*;
@@ -11,11 +6,11 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 
-public class Slugger extends Enemy{
+public class Slime extends Enemy{
     
     private BufferedImage[] sprites;
     
-    public Slugger(TileMap tm) {
+    public Slime(TileMap tm) {
         super(tm);
         
         moveSpeed = 0.3;
@@ -25,8 +20,8 @@ public class Slugger extends Enemy{
         
         width = 30;
         height = 30;
-        cwidth = 20;
-        cheight = 20;
+        cwidth = 15;
+        cheight = 15;
         
         health = maxHealth = 2;
         damage = 1;
@@ -35,10 +30,10 @@ public class Slugger extends Enemy{
         try {
             BufferedImage spritesheet = ImageIO.read(
                     getClass().getResourceAsStream(
-                            "/Resources/Sprites/Enemies/slugger.gif")
+                            "/Resources/Sprites/Enemies/slimetest.png")
             );
             
-            sprites = new BufferedImage[3];
+            sprites = new BufferedImage[4];
             for(int i = 0; i < sprites.length; i++) {
                 sprites[i] = spritesheet.getSubimage(
                         i * width,

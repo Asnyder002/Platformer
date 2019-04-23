@@ -64,7 +64,7 @@ public class Level1State extends GameState{
     public void populateEnemies() {
         enemies = new ArrayList<Enemy>();
         
-        Slugger s;
+        Slime s;
         Point[] points = new Point[] {
             new Point(120, 100),
             new Point(150, 100),
@@ -72,7 +72,7 @@ public class Level1State extends GameState{
             new Point(3, 100)};
         
         for(int i = 0; i < points.length; i++) {
-            s = new Slugger(tileMap);
+            s = new Slime(tileMap);
             s.setPosition(points[i].x, points[i].y);
             enemies.add(s);
         }
