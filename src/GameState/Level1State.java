@@ -65,6 +65,7 @@ public class Level1State extends GameState{
         enemies = new ArrayList<Enemy>();
         
         Slime s;
+        Ghost ghost;
         Point[] points = new Point[] {
             new Point(120, 100),
             new Point(150, 100),
@@ -76,6 +77,11 @@ public class Level1State extends GameState{
             s.setPosition(points[i].x, points[i].y);
             enemies.add(s);
         }
+        
+        ghost = new Ghost(tileMap);
+        ghost.setPosition(75, 125);
+        enemies.add(ghost);
+        
     }
     
     public void update(){
