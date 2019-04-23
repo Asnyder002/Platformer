@@ -33,7 +33,7 @@ public class Player extends MapObject {
     //Animations;
     private ArrayList<BufferedImage[]> sprites;
     private final int[] numFrames = {
-        2, 4, 1, 2, 4, 4
+        2, 4, 1, 2, 4, 4, 3
     };
 
     //Animation actions
@@ -80,11 +80,11 @@ public class Player extends MapObject {
 
         //Loads in spritesheet
         try {
-            BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Resources/Sprites/Player/blackMage2.gif"));
+            BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Resources/Sprites/Player/blackMage.gif"));
 
             sprites = new ArrayList<BufferedImage[]>();
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 7; i++) {
                 BufferedImage[] bi = new BufferedImage[numFrames[i]];
                 for (int j = 0; j < numFrames[i]; j++) {
 

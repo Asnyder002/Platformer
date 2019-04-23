@@ -70,7 +70,7 @@ public class Level1State extends GameState{
             new Point(120, 100),
             new Point(150, 100),
             new Point(50, 100),
-            new Point(3, 100)};
+            new Point(500, 100)};
         
         for(int i = 0; i < points.length; i++) {
             s = new Slime(tileMap);
