@@ -119,6 +119,7 @@ public class Player extends MapObject {
         sfx = new HashMap<String, AudioPlayer>();
         sfx.put("jump", new AudioPlayer("/Resources/SFX/jump.mp3"));
         sfx.put("strike", new AudioPlayer("/Resources/SFX/strike.mp3"));
+        sfx.put("fireball", new AudioPlayer("/Resources/SFX/fireball.mp3"));
     }
 
     public int getHealth() {
@@ -282,6 +283,7 @@ public class Player extends MapObject {
         }
         if (firing && currentAction != FIREBALL) {
             if (fire > fireCost) {
+                sfx.get("fireball").play();
                 fire -= fireCost;
                 FireBall fb = new FireBall(tileMap, facingRight);
                 fb.setPosition(x, y);
