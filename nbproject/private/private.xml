@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/TileMap/Tile.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/GameState/GameStateManager.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/Entity/Player.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/TileMap/TileMap.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/GameState/GameState.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/Main/GamePanel.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/Entity/Enemies/Ghost.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/Entity/Enemy.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/GameState/Level1State.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/Entity/Enemies/Slime.java</file>
-            <file>file:/C:/Users/Adam/Documents/NetBeansProjects/Platformer/src/Entity/MapObject.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
