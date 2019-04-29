@@ -26,6 +26,7 @@ public class Slime extends Enemy{
         health = maxHealth = 2;
         damage = 1;
         
+        
         // Loading sprites
         try {
             BufferedImage spritesheet = ImageIO.read(
@@ -72,7 +73,6 @@ public class Slime extends Enemy{
         if(falling) {
             dy += fallSpeed;
         }
-
     }
     
     public void update() {

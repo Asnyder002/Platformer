@@ -114,6 +114,10 @@ public class Level1State extends GameState{
             }
         }
         
+        if(player.getDead()) {
+            gsm.setState(GameStateManager.GAMEOVERSTATE);
+        }
+        
     }
     
     public void draw(java.awt.Graphics2D g){

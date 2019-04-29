@@ -10,11 +10,12 @@ public class GameStateManager {
     private int currentState;
     
     //States of the game in arrayList
-    public static final int NUMGAMESTATES = 2;
+    public static final int NUMGAMESTATES = 3;
     public static final int MENUSTATE = 0;
     public static final int LEVEL1STATE = 1;
+    public static final int GAMEOVERSTATE = 2;
     
-    //Constructor that creates game state array
+    //Constructor that creates game state
     public GameStateManager() {
         
         gameStates = new GameState[NUMGAMESTATES];
@@ -32,6 +33,9 @@ public class GameStateManager {
         }
         if(state == LEVEL1STATE) {
             gameStates[state] = new Level1State(this);
+        }
+        if(state == GAMEOVERSTATE) {
+            gameStates[state] = new GameOverState(this);
         }
     }
     
@@ -57,8 +61,6 @@ public class GameStateManager {
         catch(Exception e) {
             e.printStackTrace();
         }
-        
-        
     }
     
     //Pulls graphic from current state.

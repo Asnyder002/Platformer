@@ -96,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         
     }
     
-    //Updates game current state in arrayList
+    //Updates game current state in array
     private void update() {
         gsm.update();
     }

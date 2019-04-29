@@ -33,7 +33,7 @@ public class Player extends MapObject {
     //Animations;
     private ArrayList<BufferedImage[]> sprites;
     private final int[] numFrames = {
-        2, 4, 1, 2, 4, 4, 3
+        2, 4, 1, 2, 5, 4, 3
     };
 
     //Animation actions
@@ -44,7 +44,7 @@ public class Player extends MapObject {
     private static final int DYING = 4;
     private static final int FIREBALL = 5;
     private static final int STRIKING = 6;
-    
+
     private HashMap<String, AudioPlayer> sfx;
 
     public Player(TileMap tm) {
@@ -115,7 +115,7 @@ public class Player extends MapObject {
         currentAction = IDLE;
         animation.setFrames(sprites.get(IDLE));
         animation.setDelay(400);
-        
+
         sfx = new HashMap<String, AudioPlayer>();
         sfx.put("jump", new AudioPlayer("/Resources/SFX/jump.mp3"));
         sfx.put("strike", new AudioPlayer("/Resources/SFX/strike.mp3"));
@@ -145,6 +145,10 @@ public class Player extends MapObject {
     public void setStriking() {
         striking = true;
     }
+    
+    public boolean getDead() {
+        return dead;
+    }
 
     public void checkAttack(ArrayList<Enemy> enemies) {
 
@@ -172,29 +176,33 @@ public class Player extends MapObject {
                 }
             }
             // Fireball attack
-                for (int j = 0; j < fireBalls.size(); j++) {
+            for (int j = 0; j < fireBalls.size(); j++) {
                 if (fireBalls.get(j).intersects(e)) {
                     e.hit(fireBallDamage);
                     fireBalls.get(j).setHit();
                     break;
                 }
             }
-            
-            
-            
+
             // Check enemy collision
-            if(intersects(e)) {
+            if (intersects(e)) {
                 hit(e.getDamage());
             }
-            
+
         }
     }
-    
+
     public void hit(int damage) {
-        if(flinching) return;
+        if (flinching) {
+            return;
+        }
         health -= damage;
-        if(health < 0) health = 0;
-        if(health == 0) dead = true;
+        if (health < 0) {
+            health = 0;
+        }
+        if (health == 0) {
+            dead = true;
+        }
         flinching = true;
         flinchTimer = System.nanoTime();
     }
@@ -275,6 +283,11 @@ public class Player extends MapObject {
                 firing = false;
             }
         }
+        if (currentAction == DYING) {
+            if (animation.hasPlayedOnce()) {
+                
+            }
+        }
 
         //Fireball attack
         fire += 1;
@@ -300,58 +313,66 @@ public class Player extends MapObject {
                 i--;
             }
         }
-        
+
         // check done flinching
-        if(flinching) {
+        if (flinching) {
             long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
-            if(elapsed > 1000) {
+            if (elapsed > 1000) {
                 flinching = false;
             }
         }
-        
-        
-        // Set animation
-        if (striking) {
-            if (currentAction != STRIKING) {
-                sfx.get("strike").play();
-                currentAction = STRIKING;
-                animation.setFrames(sprites.get(STRIKING));
-                animation.setDelay(50);
-                width = 60;
-            }
-        } else if (firing) {
-            if (currentAction != FIREBALL) {
-                currentAction = FIREBALL;
-                animation.setFrames(sprites.get(FIREBALL));
-                animation.setDelay(50);
-                width = 30;
-            }
-        } else if (dy > 0) {
 
-            if (currentAction != FALLING) {
-                currentAction = FALLING;
-                animation.setFrames(sprites.get(FALLING));
-                animation.setDelay(150);
-                width = 30;
-            }
-        } else if (dy < 0) {
-            if (currentAction != JUMPING) {
-                currentAction = JUMPING;
-                animation.setFrames(sprites.get(JUMPING));
-                animation.setDelay(-1);
-                width = 30;
-            }
-        } else if (left || right) {
-            if (currentAction != WALKING) {
-                currentAction = WALKING;
-                animation.setFrames(sprites.get(WALKING));
-                animation.setDelay(40);
-                width = 30;
+        // Set animation
+        if (!dead) {
+            if (striking) {
+                if (currentAction != STRIKING) {
+                    sfx.get("strike").play();
+                    currentAction = STRIKING;
+                    animation.setFrames(sprites.get(STRIKING));
+                    animation.setDelay(50);
+                    width = 60;
+                }
+            } else if (firing) {
+                if (currentAction != FIREBALL) {
+                    currentAction = FIREBALL;
+                    animation.setFrames(sprites.get(FIREBALL));
+                    animation.setDelay(50);
+                    width = 30;
+                }
+            } else if (dy > 0) {
+
+                if (currentAction != FALLING) {
+                    currentAction = FALLING;
+                    animation.setFrames(sprites.get(FALLING));
+                    animation.setDelay(150);
+                    width = 30;
+                }
+            } else if (dy < 0) {
+                if (currentAction != JUMPING) {
+                    currentAction = JUMPING;
+                    animation.setFrames(sprites.get(JUMPING));
+                    animation.setDelay(-1);
+                    width = 30;
+                }
+            } else if (left || right) {
+                if (currentAction != WALKING) {
+                    currentAction = WALKING;
+                    animation.setFrames(sprites.get(WALKING));
+                    animation.setDelay(40);
+                    width = 30;
+                }
+            } else {
+                if (currentAction != IDLE) {
+                    currentAction = IDLE;
+                    animation.setFrames(sprites.get(IDLE));
+                    animation.setDelay(400);
+                    width = 30;
+                }
             }
         } else {
-            if (currentAction != IDLE) {
-                currentAction = IDLE;
-                animation.setFrames(sprites.get(IDLE));
+            if (currentAction != DYING) {
+                currentAction = DYING;
+                animation.setFrames(sprites.get(DYING));
                 animation.setDelay(400);
                 width = 30;
             }
