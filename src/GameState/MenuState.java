@@ -63,7 +63,7 @@ public class MenuState extends GameState {
         //draw title
         g.setColor(titleColor);
         g.setFont(titleFont);
-        g.drawString("Platformer", 95, 70);
+        g.drawString("Slimes Might Fall", 50, 70);
         
         //draw menu options
         g.setFont(font);

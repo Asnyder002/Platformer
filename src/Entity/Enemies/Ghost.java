@@ -31,7 +31,7 @@ public class Ghost extends Enemy{
         try {
             BufferedImage spritesheet = ImageIO.read(
                     getClass().getResourceAsStream(
-                            "/Resources/Sprites/Enemies/ghostTest.png")
+                            "/Resources/Sprites/Enemies/ghost.png")
             );
             
             sprites = new BufferedImage[4];

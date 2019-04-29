@@ -6,15 +6,15 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 
-public class Slime extends Enemy{
+public class SlimeRed extends Enemy{
     
     private BufferedImage[] sprites;
     
-    public Slime(TileMap tm) {
+    public SlimeRed(TileMap tm) {
         super(tm);
         
-        moveSpeed = 0.3;
-        maxSpeed = 0.3;
+        moveSpeed = 0.6;
+        maxSpeed = 0.6;
         fallSpeed = 0.2;
         maxFallSpeed = 10.0;
         
@@ -23,15 +23,15 @@ public class Slime extends Enemy{
         cwidth = 15;
         cheight = 15;
         
-        health = maxHealth = 2;
-        damage = 1;
+        health = maxHealth = 9;
+        damage = 2;
         
-        
+
         // Loading sprites
         try {
             BufferedImage spritesheet = ImageIO.read(
                     getClass().getResourceAsStream(
-                            "/Resources/Sprites/Enemies/slime.png")
+                            "/Resources/Sprites/Enemies/slimeRed.png")
             );
             
             sprites = new BufferedImage[4];

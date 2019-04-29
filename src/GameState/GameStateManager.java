@@ -59,7 +59,7 @@ public class GameStateManager {
             gameStates[currentState].update();
         }
         catch(Exception e) {
-            e.printStackTrace();
+            
         }
     }
     
@@ -69,7 +69,7 @@ public class GameStateManager {
             gameStates[currentState].draw(g);
         }
         catch(Exception e) {
-            e.printStackTrace();
+            
         }
     }
     

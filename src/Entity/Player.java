@@ -75,7 +75,7 @@ public class Player extends MapObject {
         fireBallDamage = 5;
         fireBalls = new ArrayList<FireBall>();
 
-        strikeDamage = 8;
+        strikeDamage = 3;
         strikeRange = 40;
 
         //Loads in spritesheet

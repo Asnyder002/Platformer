@@ -15,13 +15,11 @@ public class GameOverState extends GameState {
     
     //Array with the options for the menu.
     private String[] options = {
-        "Start",
+        "Play Again",
         "Help",
         "Quit"
     };
     
-    private Color titleColor;
-    private Font titleFont;
     private Font font;
     
     //Constructor 
@@ -32,11 +30,8 @@ public class GameOverState extends GameState {
         
         //Sets up background image and menu look.
         try {
-            bg = new Background("/Resources/Backgrounds/Menu.png", 1);
+            bg = new Background("/Resources/Backgrounds/gameOver.jpg", 1);
             bg.setVector(-.01, 0);
-            
-            titleColor = new Color (255, 255, 0);
-            titleFont = new Font("Century Gothic", Font.PLAIN, 28);
             font = new Font("Arial", Font.PLAIN, 12);
             
         }
@@ -60,21 +55,16 @@ public class GameOverState extends GameState {
         //draw bg
         bg.draw(g);
         
-        //draw title
-        g.setColor(titleColor);
-        g.setFont(titleFont);
-        g.drawString("Platformer", 95, 70);
-        
         //draw menu options
         g.setFont(font);
         for(int i = 0; i < options.length; i++) {
             if(i == currentChoice) {
-                g.setColor(Color.DARK_GRAY);
+                g.setColor(Color.RED);
             }
             else {
                 g.setColor(Color.YELLOW);
             }
-            g.drawString(options[i], 145, 140 + i * 15);
+            g.drawString(options[i], 135, 165 + i * 15);
         }
     }
     
